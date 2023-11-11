@@ -9,6 +9,12 @@
 
 // Добавьте сюда заголовочные файлы для предварительной компиляции
 #include "framework.h"
-#include <string>
+#include <algorithm>
+#include <array>
+// #include <cstdio>
 #include <cstring>
+#include <functional>
+#include <iterator>
+// #include <stdexcept>
+#include <string>
 #endif //PCH_H
