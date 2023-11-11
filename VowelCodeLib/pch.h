@@ -9,5 +9,6 @@
 
 // Добавьте сюда заголовочные файлы для предварительной компиляции
 #include "framework.h"
-
+#include <string>
+#include <cstring>
 #endif //PCH_H

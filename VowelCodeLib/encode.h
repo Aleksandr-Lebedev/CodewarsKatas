@@ -3,7 +3,7 @@
 
 namespace CodewarsKatas
 {
-namespace VowelCodeLig
+namespace VowelCodeLib
 {
 	std::string encode(const std::string& str);
 

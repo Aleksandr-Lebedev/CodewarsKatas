@@ -6,6 +6,8 @@
 #define VOWELCODELIB_API __declspec(dllimport)
 #endif
 
+// https://www.codewars.com/kata/53697be005f803751e0015aa/train/cpp
+
 typedef enum
 {
 	NO_ERROR_VWC                  = 0,

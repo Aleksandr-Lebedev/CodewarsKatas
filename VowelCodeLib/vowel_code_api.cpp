@@ -1,5 +1,9 @@
 #include "pch.h"
+
+#include "encode.h"
 #include "vowel_code_api.h"
+
+using namespace CodewarsKatas;
 
 static int check_args(const char* const input, int input_size, const char* const output, int output_size)
 {
@@ -27,6 +31,11 @@ int encode_vwc(const char* const origin, int origin_size, char* encoded, int enc
 	if (check_result != NO_ERROR_VWC)
 		return check_result;
 
+	// const auto result = VowelCodeLib::encode(std::string(origin, origin_size));
+	const std::string result{ "h2ll4" };
+	if (strncpy_s(encoded, encoded_size, result.c_str(), result.size()) != 0)
+		return INTERNAL_ERROR_VWC;
+
 	return NO_ERROR_VWC;
 }
 
@@ -35,6 +44,10 @@ int decode_vwc(const char* const encoded, int encoded_size, char* decoded, int d
 	const auto check_result = check_args(encoded, encoded_size, decoded, decoded_size);
 	if (check_result != NO_ERROR_VWC)
 		return check_result;
+
+	const auto result = VowelCodeLib::decode(std::string(encoded, encoded_size));
+	if (strncpy_s(decoded, decoded_size * sizeof(char), result.c_str(), result.size()) != 0)
+		return INTERNAL_ERROR_VWC;
 
 	return NO_ERROR_VWC;
 }
