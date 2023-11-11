@@ -31,8 +31,7 @@ int encode_vwc(const char* const origin, int origin_size, char* encoded, int enc
 	if (check_result != NO_ERROR_VWC)
 		return check_result;
 
-	// const auto result = VowelCodeLib::encode(std::string(origin, origin_size));
-	const std::string result{ "h2ll4" };
+	const auto result = VowelCodeLib::encode(std::string(origin, origin_size));
 	if (strncpy_s(encoded, encoded_size, result.c_str(), result.size()) != 0)
 		return INTERNAL_ERROR_VWC;
 
