@@ -25,6 +25,21 @@ namespace
 				return entry_it->second;
 		}
 	};
+
+	class Decoder
+	{
+	public:
+		char operator()(char ch)
+		{
+			const auto entry_it = std::find_if(ENCODE_TABLE.cbegin(), ENCODE_TABLE.cend(),
+				[ch](const auto& entry) { return entry.second == ch; });
+
+			if (entry_it == ENCODE_TABLE.cend())
+				return ch;
+			else
+				return entry_it->first;
+		}
+	};
 }
 
 namespace CodewarsKatas
@@ -41,7 +56,10 @@ namespace VowelCodeLib
 
 	std::string decode(const std::string& str)
 	{
-		return std::string();
+		std::string decoded{};
+		Decoder decoder;
+		std::transform(str.cbegin(), str.cend(), std::back_inserter(decoded), decoder);
+		return decoded;
 	}
 }
 }
