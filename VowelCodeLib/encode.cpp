@@ -11,8 +11,6 @@ namespace
 		std::make_pair('u', '5'),
 	};
 
-	constexpr int ERR_BUF_SIZE{ 30 };
-
 	class Encoder
 	{
 	public:
