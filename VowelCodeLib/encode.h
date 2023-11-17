@@ -5,9 +5,9 @@ namespace CodewarsKatas
 {
 namespace VowelCodeLib
 {
-	std::string encode(const std::string& str);
+	std::string encode(std::string_view str);
 
-	std::string decode(const std::string& str);
+	std::string decode(std::string_view str);
 }
 }
 

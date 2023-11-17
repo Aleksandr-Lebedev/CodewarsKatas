@@ -54,14 +54,14 @@ namespace CodewarsKatas
 {
 namespace VowelCodeLib
 {
-	std::string encode(const std::string& str)
+	std::string encode(std::string_view str)
 	{
 		std::string encoded{};
 		std::transform(str.cbegin(), str.cend(), std::back_inserter(encoded), &EncodeTable::encode_char);
 		return encoded;
 	}
 
-	std::string decode(const std::string& str)
+	std::string decode(std::string_view str)
 	{
 		std::string decoded{};
 		std::transform(str.cbegin(), str.cend(), std::back_inserter(decoded), &EncodeTable::decode_char);
