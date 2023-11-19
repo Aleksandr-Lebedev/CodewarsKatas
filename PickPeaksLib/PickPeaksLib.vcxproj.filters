@@ -24,6 +24,9 @@
     <ClInclude Include="pick_peaks_api.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="pick_peaks.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -33,6 +36,9 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="pick_peaks_api.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="pick_peaks.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

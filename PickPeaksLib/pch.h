@@ -9,5 +9,7 @@
 
 // Добавьте сюда заголовочные файлы для предварительной компиляции
 #include "framework.h"
+#include <algorithm>
+#include <iterator>
 
 #endif //PCH_H

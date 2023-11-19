@@ -14,9 +14,9 @@ typedef struct
 	int* pos;
 } Peaks;
 
-int PICKPEAKSLIB_API init_peaks(Peaks* peacks, int capacity);
+int PICKPEAKSLIB_API init_peaks(Peaks* peaks, int capacity);
 
-int PICKPEAKSLIB_API free_peaks(Peaks* peacks);
+int PICKPEAKSLIB_API free_peaks(Peaks* peaks);
 
-int PICKPEAKSLIB_API get_peaks(const int* const sequence, int seq_size, Peaks* peacks);
+int PICKPEAKSLIB_API get_peaks(const int* const sequence, int seq_size, Peaks* peaks);
 
