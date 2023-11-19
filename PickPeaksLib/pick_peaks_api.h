@@ -6,6 +6,8 @@
 #define PICKPEAKSLIB_API __declspec(dllimport)
 #endif
 
+#define MIN_SEQ_SIZE 3
+
 typedef struct
 {
 	int  capacity;

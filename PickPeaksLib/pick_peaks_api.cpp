@@ -42,6 +42,9 @@ int get_peaks(const int* const sequence, int seq_size, Peaks* peaks)
 	using CodewarsKatas::PeakData;
 	using CodewarsKatas::PickPeaksLib::pick_peaks;
 
+	if (seq_size < MIN_SEQ_SIZE)
+		return 0;
+
 	std::vector<int> v_sequence;
 	std::copy_n(sequence, seq_size, std::back_inserter(v_sequence));
 
