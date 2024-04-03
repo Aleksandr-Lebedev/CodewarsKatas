@@ -160,12 +160,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="athl_assoc_stat_api.h" />
+    <ClInclude Include="calculate_stats.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="parse_error.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="athl_assoc_stat_api.cpp" />
+    <ClCompile Include="calculate_stats.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

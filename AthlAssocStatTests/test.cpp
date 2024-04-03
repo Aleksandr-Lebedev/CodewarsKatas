@@ -5,17 +5,12 @@
 using namespace athl_assoc;
 
 TEST(TestErrorHandling, TestRaceResultIsNullptr) {
-	ASSERT_THROW(calculate_race_statistics(nullptr, 10, nullptr, 0), std::invalid_argument);
-}
-
-TEST(TestErrorHandling, TestRaceResultStringLengthIsZero) {
-	std::string dummy{ 10, 'a' };
-	ASSERT_THROW(calculate_race_statistics(dummy.data(), 0, nullptr, 0), std::length_error);
+	ASSERT_THROW(calculate_race_statistics(nullptr, nullptr, 0), std::invalid_argument);
 }
 
 /*
 TEST(TestErrorHandling, TestParseError) {
 	std::string dummy{ 10, 'a' };
-	ASSERT_THROW(calculate_race_statistics(dummy.data(), dummy.length(), nullptr, 0), ParseError);
+	ASSERT_THROW(calculate_race_statistics(dummy.data(), nullptr, 0), ParseError);
 }
 */
