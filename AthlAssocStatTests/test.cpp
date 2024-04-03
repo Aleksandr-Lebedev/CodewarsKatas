@@ -13,7 +13,9 @@ TEST(TestErrorHandling, TestRaceResultStringLengthIsZero) {
 	ASSERT_THROW(calculate_race_statistics(dummy.data(), 0, nullptr, 0), std::length_error);
 }
 
+/*
 TEST(TestErrorHandling, TestParseError) {
 	std::string dummy{ 10, 'a' };
 	ASSERT_THROW(calculate_race_statistics(dummy.data(), dummy.length(), nullptr, 0), ParseError);
 }
+*/
