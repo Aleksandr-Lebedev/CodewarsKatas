@@ -30,6 +30,9 @@
     <ClInclude Include="calculate_stats.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="library_declspec.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">

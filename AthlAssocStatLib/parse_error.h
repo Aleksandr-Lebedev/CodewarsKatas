@@ -2,7 +2,7 @@
 
 #include <stdexcept>
 
-namespace athl_assoc
+namespace athl_assoc::api
 {
 	/// @class ParseError
 	/// @brief This exception indicates an error occurred while parsing a string

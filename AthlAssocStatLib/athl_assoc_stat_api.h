@@ -1,13 +1,9 @@
 #pragma once
 
-#ifdef ATHLASSOCSTATLIB_EXPORTS
-#define ATHLASSOCSTATLIB_API __declspec(dllexport)
-#else
-#define ATHLASSOCSTATLIB_API  __declspec(dllimport)
-#endif
+#include "library_declspec.h"
 
 // https://www.codewars.com/kata/55b3425df71c1201a800009c
-namespace athl_assoc
+namespace athl_assoc::api
 {
 	/// @brief Calculate race statistics.
 	///

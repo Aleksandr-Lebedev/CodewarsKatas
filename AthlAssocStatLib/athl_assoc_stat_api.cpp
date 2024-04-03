@@ -4,7 +4,7 @@
 #include "calculate_stats.h"
 #include "parse_error.h"
 
-namespace athl_assoc
+namespace athl_assoc::api
 {
 	int calculate_race_statistics(const char* const race_results_cstr, char* race_stats_out_buf, int race_stats_out_buf_length)
 	{

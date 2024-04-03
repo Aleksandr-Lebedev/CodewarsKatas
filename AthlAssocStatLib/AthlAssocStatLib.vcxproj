@@ -162,6 +162,7 @@
     <ClInclude Include="athl_assoc_stat_api.h" />
     <ClInclude Include="calculate_stats.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="library_declspec.h" />
     <ClInclude Include="parse_error.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
