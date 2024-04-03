@@ -18,5 +18,8 @@ namespace athl_assoc::api
 	/// @exception athl_assoc::ParseError in case if race_resutls_cstr parse failed
 	[[nodiscard]]
 	int ATHLASSOCSTATLIB_API calculate_race_statistics(const char* const race_results_cstr, char* race_stats_out_buf, int race_stats_out_buf_length);
+
+	/// Returns the maximum number of character in a race results string without a null terminator
+	int ATHLASSOCSTATLIB_API race_results_str_max_length() noexcept;
 }
 

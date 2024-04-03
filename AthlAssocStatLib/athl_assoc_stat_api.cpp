@@ -15,4 +15,9 @@ namespace athl_assoc::api
 
 		return 0;
 	}
+
+	int race_results_str_max_length() noexcept
+	{
+		return MAX_RACE_RESULT_STRING_CHARACTERS;
+	}
 }
