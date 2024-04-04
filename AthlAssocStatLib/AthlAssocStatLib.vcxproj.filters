@@ -24,13 +24,16 @@
     <ClInclude Include="athl_assoc_stat_api.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="parse_error.h">
+    <ClInclude Include="custom_exceptions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="calculate_stats.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="library_declspec.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="auxiliary.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -45,6 +48,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="calculate_stats.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="auxiliary.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

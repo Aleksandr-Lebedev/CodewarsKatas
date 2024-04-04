@@ -6,7 +6,7 @@ namespace athl_assoc
 {
 	std::string calculate_statistics(const std::string& race_results)
 	{
-		return std::string();
+		return std::string("abc");
 	}
 }
 

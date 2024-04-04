@@ -15,9 +15,10 @@ namespace athl_assoc::api
 	/// @param[in] race_stats_out_buf_length a length of the output c-string in characters 
 	/// @return the new number of characters in race stats output c-string
 	/// @exception std::invalid_argument if race_resultes_cstr is a null pointer.
-	///            Alse this exception will be thrown in case if the rase resutls c-string is
+	///            Also this exception will be thrown in case if the rase resutls c-string is
 	///            too long or doesn't contains a null terminator.
-	/// @exception athl_assoc::ParseError in case if race_resutls_cstr parse failed
+	/// @exception athl_assoc::ParseError in case if race_resutls_cstr parse failed.
+	/// @exception athl_assoc::ReturnValueException is case of any other error.
 	[[nodiscard]]
 	int ATHLASSOCSTATLIB_API calculate_race_statistics(const char* const race_results_cstr, char* race_stats_out_buf, int race_stats_out_buf_length);
 
