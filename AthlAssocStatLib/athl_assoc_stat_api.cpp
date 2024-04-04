@@ -8,15 +8,14 @@ namespace
 {
 	inline int search_null_term(const char* const cstr, int max_offset)
 	{
-		int offset = 0;
-		for (; offset < max_offset; ++offset)
+		for (int offset = 0; offset < max_offset; ++offset)
 		{
 			if (cstr[offset] == '\0')
 			{
-				break;
+				return offset;
 			}
 		}
-		return offset;
+		return max_offset;
 	}
 }
 
