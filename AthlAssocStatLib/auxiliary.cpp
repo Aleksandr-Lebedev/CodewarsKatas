@@ -14,5 +14,22 @@ namespace athl_assoc
 		assert(chars_written > 0);
 		return api::ReturnValueException(error_value, error_description_buffer);
 	}
+
+	std::vector<std::string> split_string(const std::string& str, std::string_view separators)
+	{
+		std::vector<std::string> split;
+		auto left_it = str.begin();
+		auto right_it = std::find_first_of(left_it, str.end(), separators.cbegin(), separators.cend());
+		while (right_it != str.end())
+		{
+			split.emplace_back(left_it, right_it);
+			left_it = std::find_first_of(right_it, str.end(), separators.cbegin(), separators.cend(), [](char ch, char sp)
+				{
+					return ch != sp;
+				});
+			right_it = std::find_first_of(left_it, str.end(), separators.cbegin(), separators.cend());
+		}
+		return split;
+	}
 }
 

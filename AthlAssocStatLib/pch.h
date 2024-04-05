@@ -14,5 +14,8 @@
 #include <cstdio>
 #include <stdexcept>
 #include <string>
+#include <string_view>
+#include <vector>
+#include <iterator>
 
 #endif //PCH_H
