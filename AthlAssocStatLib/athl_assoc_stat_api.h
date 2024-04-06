@@ -1,6 +1,7 @@
 #pragma once
 
 #include "library_declspec.h"
+#include "return_codes.h"
 
 // https://www.codewars.com/kata/55b3425df71c1201a800009c
 namespace athl_assoc::api

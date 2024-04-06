@@ -1,0 +1,13 @@
+#pragma once
+
+typedef enum
+{
+	COMMON_NO_ERROR           = 0x0,
+	INPUT_STRING_PTR_NULL     = 0x1,
+	INPUT_STRING_LENGTH_ZERO  = 0x2,
+	OUTPUT_STRING_PTR_NULL    = 0x3,
+	OUTPUT_STRING_LENGTH_ZERO = 0x4,
+	STRINS_SIZE_TO_LOWER      = 0x5,
+	INTERNAL_ERROR            = 0xf
+} COMMON_RET_CODES;
+
