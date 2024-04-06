@@ -33,7 +33,7 @@ int encode_vwc(const char* const origin, int origin_size, char* encoded, int enc
 
 	const auto result = VowelCodeLib::encode(origin);
 	if (strncpy_s(encoded, encoded_size, result.c_str(), result.size()) != 0)
-		return INTERNAL_ERROR;
+		return OTHER_ERROR;
 
 	return COMMON_NO_ERROR;
 }
@@ -46,7 +46,7 @@ int decode_vwc(const char* const encoded, int encoded_size, char* decoded, int d
 
 	const auto result = VowelCodeLib::decode(encoded);
 	if (strncpy_s(decoded, decoded_size * sizeof(char), result.c_str(), result.size()) != 0)
-		return INTERNAL_ERROR;
+		return OTHER_ERROR;
 
 	return COMMON_NO_ERROR;
 }
