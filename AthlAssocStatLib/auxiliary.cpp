@@ -20,7 +20,7 @@ namespace athl_assoc
 		std::vector<std::string> split;
 		auto left_it = str.begin();
 		auto right_it = std::find_first_of(left_it, str.end(), separators.cbegin(), separators.cend());
-		while (right_it != str.end())
+		while (left_it != right_it)
 		{
 			split.emplace_back(left_it, right_it);
 			left_it = std::find_first_of(right_it, str.end(), separators.cbegin(), separators.cend(), [](char ch, char sp)

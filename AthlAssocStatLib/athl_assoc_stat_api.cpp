@@ -18,11 +18,37 @@ namespace
 		}
 		return max_offset;
 	}
+
+	class SplitStringResults : public IStringSplitResult
+	{
+	public:
+		explicit SplitStringResults(std::vector<std::string> splits)
+			: _splits(splits)
+			, _idx(0)
+		{}
+		const char* next() override
+		{
+			if (_idx >= _splits.size())
+			{
+				return nullptr;
+			}
+			return _splits[_idx++].c_str();
+		}
+
+		const unsigned count() const override
+		{
+			return _splits.size();
+		}
+
+	private:
+		std::vector<std::string> _splits;
+		unsigned _idx;
+	};
 }
 
 int calculate_race_statistics(const char* const race_results_cstr, char* race_stats_out_buf, int* race_stats_out_buf_length)
 {
-	const auto max_results_cstr_length = athl_assoc::MAX_RACE_RESULT_STRING_CHARACTERS + 1;
+	const auto max_results_cstr_length = athl_assoc::MAX_CSTRING_LENGTH + 1;
 
 	if (race_results_cstr == nullptr)
 	{
@@ -58,5 +84,38 @@ int calculate_race_statistics(const char* const race_results_cstr, char* race_st
 
 int race_results_str_max_length()
 {
-	return athl_assoc::MAX_RACE_RESULT_STRING_CHARACTERS;
+	return athl_assoc::MAX_CSTRING_LENGTH;
 }
+
+int ATHLASSOCSTATLIB_API split_string(IStringSplitResult** split_result_ptr, const char* const cstr, const char* const delimiter)
+{
+	if (split_result_ptr == nullptr || cstr == nullptr || delimiter == nullptr)
+	{
+		return INPUT_STRING_PTR_NULL;
+	}
+
+	const auto max_argument_cstr_length = athl_assoc::MAX_CSTRING_LENGTH + 1;
+	if (search_null_term(cstr, max_argument_cstr_length + 1) > max_argument_cstr_length)
+	{
+		return INPUT_STRING_INVALID;
+	}
+
+	if (search_null_term(delimiter, max_argument_cstr_length + 1) > max_argument_cstr_length)
+	{
+		return INPUT_STRING_INVALID;
+	}
+
+	*split_result_ptr = new SplitStringResults(athl_assoc::split_string(std::string(cstr), delimiter));
+
+	return COMMON_NO_ERROR;
+}
+
+void unbind_string_split_result(IStringSplitResult* split_result_ptr)
+{
+	if (split_result_ptr != nullptr)
+	{
+		delete split_result_ptr;
+		split_result_ptr = nullptr;
+	}
+}
+

@@ -53,3 +53,42 @@ TEST(Codewars, TestFixed_2) {
 }
 */
 
+TEST(StringSplit, SplitWhitespaces) {
+	const char* cstr = "abc def fgh";
+	IStringSplitResult* split_result_ptr = nullptr;
+	const auto error = split_string(&split_result_ptr, cstr, " ");
+	ASSERT_EQ(error, COMMON_NO_ERROR);
+	std::unique_ptr<IStringSplitResult, StringSplitResultDeleter> split_result(split_result_ptr, unbind_string_split_result);
+	ASSERT_EQ(split_result->count(), 3);
+	EXPECT_STREQ(split_result->next(), "abc");
+	EXPECT_STREQ(split_result->next(), "def");
+	EXPECT_STREQ(split_result->next(), "fgh");
+	ASSERT_EQ(split_result->next(), nullptr);
+}
+
+TEST(StringSplit, SplitWhitespacesPlusOne) {
+	const char* cstr = "abc def fgh ";
+	IStringSplitResult* split_result_ptr = nullptr;
+	const auto error = split_string(&split_result_ptr, cstr, " ");
+	ASSERT_EQ(error, COMMON_NO_ERROR);
+	std::unique_ptr<IStringSplitResult, StringSplitResultDeleter> split_result(split_result_ptr, unbind_string_split_result);
+	ASSERT_EQ(split_result->count(), 3);
+	EXPECT_STREQ(split_result->next(), "abc");
+	EXPECT_STREQ(split_result->next(), "def");
+	EXPECT_STREQ(split_result->next(), "fgh");
+	ASSERT_EQ(split_result->next(), nullptr);
+}
+
+TEST(StringSplit, SplitCommaAndWhitespace) {
+	const char* cstr = "abc, def, fgh";
+	IStringSplitResult* split_result_ptr = nullptr;
+	const auto error = split_string(&split_result_ptr, cstr, ", ");
+	ASSERT_EQ(error, COMMON_NO_ERROR);
+	std::unique_ptr<IStringSplitResult, StringSplitResultDeleter> split_result(split_result_ptr, unbind_string_split_result);
+	ASSERT_EQ(split_result->count(), 3);
+	EXPECT_STREQ(split_result->next(), "abc");
+	EXPECT_STREQ(split_result->next(), "def");
+	EXPECT_STREQ(split_result->next(), "fgh");
+	ASSERT_EQ(split_result->next(), nullptr);
+}
+
