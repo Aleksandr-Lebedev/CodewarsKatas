@@ -37,7 +37,7 @@ namespace
 
 		const unsigned count() const override
 		{
-			return _splits.size();
+			return static_cast<unsigned>(_splits.size());
 		}
 
 	private:

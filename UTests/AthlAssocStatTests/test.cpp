@@ -2,6 +2,8 @@
 #include "athl_assoc_stat_api.h"
 #include "return_codes.h"
 
+using SplitResultSmartPtr = std::unique_ptr<IStringSplitResult, StringSplitResultDeleter>;
+
 TEST(TestErrorHandling, TestRaceResultIsNullptr) {
 	int length = 0;
 	const auto ret_code = calculate_race_statistics(nullptr, nullptr, &length);
@@ -53,42 +55,42 @@ TEST(Codewars, TestFixed_2) {
 }
 */
 
-TEST(StringSplit, SplitWhitespaces) {
-	const char* cstr = "abc def fgh";
-	IStringSplitResult* split_result_ptr = nullptr;
-	const auto error = split_string(&split_result_ptr, cstr, " ");
-	ASSERT_EQ(error, COMMON_NO_ERROR);
-	std::unique_ptr<IStringSplitResult, StringSplitResultDeleter> split_result(split_result_ptr, unbind_string_split_result);
-	ASSERT_EQ(split_result->count(), 3);
-	EXPECT_STREQ(split_result->next(), "abc");
-	EXPECT_STREQ(split_result->next(), "def");
-	EXPECT_STREQ(split_result->next(), "fgh");
-	ASSERT_EQ(split_result->next(), nullptr);
+class StringSplitTests : public testing::Test
+{
+protected:
+	void do_string_test(const char* cstr, const char* delimiters, const std::vector<std::string>& expected)
+	{
+		auto split_result = call_split_string(cstr, delimiters);
+		ASSERT_EQ(split_result->count(), expected.size());
+		for (const auto& str : expected)
+		{
+			EXPECT_STREQ(split_result->next(), str.c_str());
+		}
+	}
+
+	SplitResultSmartPtr call_split_string(const char* cstr, const char* delimiters)
+	{
+		IStringSplitResult* split_result_ptr = nullptr;
+		const auto error = split_string(&split_result_ptr, cstr, delimiters);
+		EXPECT_EQ(error, COMMON_NO_ERROR);
+		EXPECT_NE(split_result_ptr, nullptr);
+		return SplitResultSmartPtr(split_result_ptr, unbind_string_split_result);
+	}
+};
+
+TEST_F(StringSplitTests, Whitespaces) {
+	do_string_test("abc def fgh ijk", " ", {"abc", "def", "fgh", "ijk"});
 }
 
-TEST(StringSplit, SplitWhitespacesPlusOne) {
-	const char* cstr = "abc def fgh ";
-	IStringSplitResult* split_result_ptr = nullptr;
-	const auto error = split_string(&split_result_ptr, cstr, " ");
-	ASSERT_EQ(error, COMMON_NO_ERROR);
-	std::unique_ptr<IStringSplitResult, StringSplitResultDeleter> split_result(split_result_ptr, unbind_string_split_result);
-	ASSERT_EQ(split_result->count(), 3);
-	EXPECT_STREQ(split_result->next(), "abc");
-	EXPECT_STREQ(split_result->next(), "def");
-	EXPECT_STREQ(split_result->next(), "fgh");
-	ASSERT_EQ(split_result->next(), nullptr);
+TEST_F(StringSplitTests, WhitespacesAndTrailingSep) {
+	do_string_test("abc def fgh ijk ", " ", {"abc", "def", "fgh", "ijk"});
 }
 
-TEST(StringSplit, SplitCommaAndWhitespace) {
-	const char* cstr = "abc, def, fgh";
-	IStringSplitResult* split_result_ptr = nullptr;
-	const auto error = split_string(&split_result_ptr, cstr, ", ");
-	ASSERT_EQ(error, COMMON_NO_ERROR);
-	std::unique_ptr<IStringSplitResult, StringSplitResultDeleter> split_result(split_result_ptr, unbind_string_split_result);
-	ASSERT_EQ(split_result->count(), 3);
-	EXPECT_STREQ(split_result->next(), "abc");
-	EXPECT_STREQ(split_result->next(), "def");
-	EXPECT_STREQ(split_result->next(), "fgh");
-	ASSERT_EQ(split_result->next(), nullptr);
+TEST_F(StringSplitTests, CommaAndWhitespace) {
+	do_string_test("abc, def, fgh, ijk ", " ", {"abc", "def", "fgh", "ijk"});
+}
+
+TEST_F(StringSplitTests, SingleString) {
+	do_string_test("abc", " ", {"abc"});
 }
 

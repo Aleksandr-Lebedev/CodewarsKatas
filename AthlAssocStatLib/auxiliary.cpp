@@ -18,16 +18,37 @@ namespace athl_assoc
 	std::vector<std::string> split_string(const std::string& str, std::string_view separators)
 	{
 		std::vector<std::string> split;
-		auto left_it = str.begin();
-		auto right_it = std::find_first_of(left_it, str.end(), separators.cbegin(), separators.cend());
-		while (left_it != right_it)
+		// std::string::size_type left = 0;
+		// for (auto right = str.find_first_of(separators, left); right != std::string::npos && left != std::string::npos;)
+		// {
+		// 	split.emplace_back(str.substr(left, right));
+		// 	left += right;
+		// 	if (left < str.length())
+		// 	{
+		// 		left = str.find_first_not_of(separators, left);
+		// 	}
+		// 	else
+		// 	{
+		// 		break;
+		// 	}
+		// }
+		std::string chunk;
+		for (std::string::size_type i = 0; i < str.length(); ++i)
 		{
-			split.emplace_back(left_it, right_it);
-			left_it = std::find_first_of(right_it, str.end(), separators.cbegin(), separators.cend(), [](char ch, char sp)
-				{
-					return ch != sp;
-				});
-			right_it = std::find_first_of(left_it, str.end(), separators.cbegin(), separators.cend());
+			auto ch = str[i];
+			if (separators.find(ch) == std::string_view::npos)
+			{
+				chunk.push_back(ch);
+			}
+			else if (!chunk.empty())
+			{
+				split.push_back(chunk);
+				chunk.clear();
+			}
+		}
+		if (!chunk.empty())
+		{
+			split.push_back(chunk);
 		}
 		return split;
 	}
