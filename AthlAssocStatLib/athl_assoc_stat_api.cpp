@@ -87,9 +87,9 @@ int race_results_str_max_length()
 	return athl_assoc::MAX_CSTRING_LENGTH;
 }
 
-int ATHLASSOCSTATLIB_API split_string(IStringSplitResult** split_result_ptr, const char* const cstr, const char* const delimiter)
+int ATHLASSOCSTATLIB_API split_string(IStringSplitResult** split_result_ptr, const char* const cstr, char delim)
 {
-	if (split_result_ptr == nullptr || cstr == nullptr || delimiter == nullptr)
+	if (split_result_ptr == nullptr || cstr == nullptr)
 	{
 		return INPUT_STRING_PTR_NULL;
 	}
@@ -100,12 +100,7 @@ int ATHLASSOCSTATLIB_API split_string(IStringSplitResult** split_result_ptr, con
 		return INPUT_STRING_INVALID;
 	}
 
-	if (search_null_term(delimiter, max_argument_cstr_length + 1) > max_argument_cstr_length)
-	{
-		return INPUT_STRING_INVALID;
-	}
-
-	*split_result_ptr = new SplitStringResults(athl_assoc::split_string(std::string(cstr), delimiter));
+	*split_result_ptr = new SplitStringResults(athl_assoc::split_string(std::string(cstr), delim));
 
 	return COMMON_NO_ERROR;
 }

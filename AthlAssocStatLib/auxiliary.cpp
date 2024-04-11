@@ -15,14 +15,13 @@ namespace athl_assoc
 		return api::ReturnValueException(error_value, error_description_buffer);
 	}
 
-	std::vector<std::string> split_string(const std::string& str, std::string_view separators)
+	std::vector<std::string> split_string(const std::string& str, char delim)
 	{
 		std::vector<std::string> split;
 		std::string chunk;
-		for (std::string::size_type i = 0; i < str.length(); ++i)
+		for (auto ch : str)
 		{
-			auto ch = str[i];
-			if (separators.find(ch) == std::string_view::npos)
+			if (ch != delim && std::isalnum(ch))
 			{
 				chunk.push_back(ch);
 			}
@@ -34,7 +33,7 @@ namespace athl_assoc
 		}
 		if (!chunk.empty())
 		{
-			split.push_back(chunk);
+			split.emplace_back(std::move(chunk));
 		}
 		return split;
 	}

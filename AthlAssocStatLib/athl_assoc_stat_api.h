@@ -30,7 +30,7 @@ struct IStringSplitResult
 	virtual ~IStringSplitResult() {}
 };
 
-int ATHLASSOCSTATLIB_API split_string(IStringSplitResult** split_result_ptr, const char* const cstr, const char* const delimiter);
+int ATHLASSOCSTATLIB_API split_string(IStringSplitResult** split_result_ptr, const char* const cstr, char delim);
 
 typedef void(&StringSplitResultDeleter)(IStringSplitResult*);
 void ATHLASSOCSTATLIB_API unbind_string_split_result(IStringSplitResult* split_result_ptr);

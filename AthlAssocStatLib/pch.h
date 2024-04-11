@@ -11,11 +11,12 @@
 #include "framework.h"
 #include <algorithm>
 #include <cassert>
+#include <cctype>
 #include <cstdio>
+#include <iterator>
 #include <stdexcept>
 #include <string>
 #include <string_view>
 #include <vector>
-#include <iterator>
 
 #endif //PCH_H
