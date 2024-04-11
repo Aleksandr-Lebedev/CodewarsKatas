@@ -87,10 +87,19 @@ TEST_F(StringSplitTests, WhitespacesAndTrailingSep) {
 }
 
 TEST_F(StringSplitTests, CommaAndWhitespace) {
-	do_string_test("abc, def, fgh, ijk ", " ", {"abc", "def", "fgh", "ijk"});
+	do_string_test("abc, def, fgh, ijk ", ", ", {"abc", "def", "fgh", "ijk"});
 }
 
 TEST_F(StringSplitTests, SingleString) {
 	do_string_test("abc", " ", {"abc"});
+}
+
+TEST_F(StringSplitTests, EmptyString) {
+	auto split_result = call_split_string("", " ");
+	ASSERT_EQ(split_result->count(), 0);
+}
+
+TEST_F(StringSplitTests, NoDelimeters) {
+	do_string_test("abc, def, fgh, ijk ", "", {"abc, def, fgh, ijk "});
 }
 
