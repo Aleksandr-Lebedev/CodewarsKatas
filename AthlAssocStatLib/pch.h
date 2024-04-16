@@ -14,6 +14,7 @@
 #include <cctype>
 #include <cstdio>
 #include <iterator>
+#include <regex>
 #include <stdexcept>
 #include <string>
 #include <string_view>
