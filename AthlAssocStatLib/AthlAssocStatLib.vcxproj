@@ -170,6 +170,7 @@
     <ClInclude Include="library_declspec.h" />
     <ClInclude Include="custom_exceptions.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="run_time_result.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="athl_assoc_stat_api.cpp" />
@@ -182,6 +183,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="run_time_result.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

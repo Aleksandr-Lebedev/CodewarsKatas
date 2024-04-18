@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "athl_assoc_stat_api.h"
 #include "return_codes.h"
+#include "run_time_result.h"
 
 using SplitResultSmartPtr = std::unique_ptr<IStringSplitResult, StringSplitResultDeleter>;
 
