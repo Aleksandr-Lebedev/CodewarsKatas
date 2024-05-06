@@ -12,7 +12,7 @@ namespace athl_assoc
 			, _seconds(s)
 		{}
 
-		static TimeResult from_str(const char* tm_result_cstr);
+		static TimeResult from_str(std::string_view tm_result_strv);
 
 		unsigned Hours() const noexcept
 		{

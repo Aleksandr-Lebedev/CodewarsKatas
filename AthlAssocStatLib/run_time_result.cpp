@@ -30,10 +30,10 @@ namespace
 } 
 namespace athl_assoc
 {
-	TimeResult TimeResult::from_str(const char* tm_result_cstr)
+	TimeResult TimeResult::from_str(std::string_view tm_result_strv)
 	{
 		TimeResult tm_result;
-		std::string tm_result_str(tm_result_cstr);
+		std::string tm_result_str(tm_result_strv);
 
 		const char* delim = "|";
 		char* next_token  = nullptr;
