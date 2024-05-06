@@ -5,6 +5,7 @@
 #pragma once
 
 #include "gtest/gtest.h"
-#include <string_view>
-#include <memory>
 #include <functional>
+#include <memory>
+#include <stdexcept>
+#include <string_view>
