@@ -16,8 +16,8 @@ namespace
 
 		std::vector<TimeResult> run_results;
 		std::for_each(iter, std::sregex_token_iterator{}, [&run_results](auto& match) {
-				run_results.push_back(TimeResult::from_str(match.str()));
-		});
+			run_results.push_back(TimeResult::from_str(match.str()));
+			});
 		return run_results;
 	}
 }
