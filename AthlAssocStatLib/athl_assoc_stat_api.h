@@ -23,10 +23,7 @@ struct IStringSplitResult
 {
 	virtual const char* next() = 0;
 	virtual const unsigned count() const = 0;
-	// virtual int error() const = 0;
 
-	// virtual IStringSplitResult* AddRef();
-	// virtual void Release() = 0;
 	virtual ~IStringSplitResult() {}
 };
 

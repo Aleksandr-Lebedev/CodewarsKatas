@@ -13,11 +13,13 @@
 #include <cassert>
 #include <cctype>
 #include <cstdio>
+#include <cstdlib>
+#include <initializer_list>
 #include <iterator>
+#include <numeric>
 #include <regex>
 #include <stdexcept>
 #include <string>
-#include <string_view>
 #include <vector>
 
 #endif //PCH_H
