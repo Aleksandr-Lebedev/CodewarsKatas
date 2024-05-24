@@ -84,15 +84,17 @@ namespace
 		{
 			return calculate_average(run_results[0], run_results[1]);
 		}
-		else if (results_count % 2 == 0)
-		{
-			auto median_idx = results_count / 2 + 1;
-			return calculate_average(run_results[median_idx], run_results[median_idx + 1]);
-		}
 		else
 		{
-			auto median_idx = results_count / 2 + 1;
-			return run_results[median_idx];
+			auto median_idx = results_count / 2;
+			if (results_count % 2 == 0)
+			{
+				return calculate_average(run_results[median_idx], run_results[median_idx + 1]);
+			}
+			else
+			{
+				return run_results[median_idx];
+			}
 		}
 	}
 }

@@ -28,8 +28,8 @@ TEST(Codewars, TestFixed_1) {
 	const char* race_results = "01|15|59, 1|47|16, 01|17|20, 1|32|34, 2|17|17";
 	const char* expected = "Range: 01|01|18 Average: 01|38|05 Median: 01|32|34";
 	const auto expected_length = static_cast<int>(strlen(expected));
-	int  actual_length = expected_length;
-	std::string statistics(expected_length, 'a');
+	int  actual_length = expected_length + 1;
+	std::string statistics(actual_length, 'a');
 
 	const auto ret_code = calculate_race_statistics(race_results, statistics.data(), &actual_length);
 	ASSERT_EQ(ret_code, COMMON_NO_ERROR);

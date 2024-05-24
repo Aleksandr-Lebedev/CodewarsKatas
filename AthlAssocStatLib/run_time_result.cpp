@@ -63,7 +63,7 @@ namespace athl_assoc
 	{
 		constexpr unsigned BUFF_SIZE = 15;
 
-		const char* format = "%2u|%2u|%2u";
+		const char* format = "%02u|%02u|%02u";
 		std::string str_result(BUFF_SIZE, '\0');
 		auto chars_written = sprintf_s(str_result.data(), BUFF_SIZE, format, _hours, _minutes, _seconds);
 		assert(chars_written > 0);
