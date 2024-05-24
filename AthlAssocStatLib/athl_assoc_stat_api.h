@@ -31,3 +31,7 @@ int ATHLASSOCSTATLIB_API split_string(IStringSplitResult** split_result_ptr, con
 
 typedef void(&StringSplitResultDeleter)(IStringSplitResult*);
 void ATHLASSOCSTATLIB_API unbind_string_split_result(IStringSplitResult* split_result_ptr);
+
+ATHLASSOCSTATLIB_API 
+const char* get_last_error_msg_cstr();
+
