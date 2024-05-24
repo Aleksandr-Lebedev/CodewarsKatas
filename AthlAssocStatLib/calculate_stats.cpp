@@ -32,9 +32,9 @@ namespace
 	{
 		std::string results_string(EMPTY_RESULTS_STR.size(), '\0');
 
-		results_string.assign(range.to_str("Range"));
-		results_string.append(average.to_str(" Average"));
-		results_string.append(median.to_str(" Median"));
+		results_string.assign("Range: ").append(range.to_str())
+			          .append(" Average: ").append(average.to_str())
+			          .append(" Median: ").append(median.to_str());
 
 		results_string.shrink_to_fit();
 		return results_string;
@@ -62,18 +62,14 @@ namespace
 	{
 		auto average = std::accumulate(run_results.cbegin(), run_results.cend(), TimeResult{});
 
-		average.divide(static_cast<unsigned>(run_results.size()));
-
-		return average;
+		return average / static_cast<unsigned>(run_results.size());
 	}
 
 	TimeResult calculate_average(const TimeResult& first, const TimeResult& second)
 	{
 		auto median = first + second;
 
-		median.divide(MINIMUM_RUN_RESULTS_NUM);
-
-		return median;
+		return median / MINIMUM_RUN_RESULTS_NUM;
 	}
 
 	TimeResult calculate_median(const TimeResultsVector& run_results)

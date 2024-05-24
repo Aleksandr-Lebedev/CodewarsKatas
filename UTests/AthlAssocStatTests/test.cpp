@@ -39,18 +39,18 @@ TEST(Codewars, TestFixed_1) {
 	ASSERT_STREQ(expected, statistics.c_str());
 }
 
-/*
 TEST(Codewars, TestFixed_2) {
 	const char* race_results = "02|15|59, 2|47|16, 02|17|20, 2|32|34, 2|17|17, 2|22|00, 2|31|41";
 	const char* expected = "Range: 00|31|17 Average: 02|26|18 Median: 02|22|00";
 	const auto expected_length = static_cast<int>(strlen(expected));
-	std::string statistics(expected_length, 'a');
+	int  actual_length = expected_length + 1;
+	std::string statistics(actual_length, 'a');
 
-	const auto actual_length = calculate_race_statistics(race_results, statistics.data(), expected_length);
+	const auto ret_code = calculate_race_statistics(race_results, statistics.data(), &actual_length);
+	ASSERT_EQ(ret_code, COMMON_NO_ERROR);
 	statistics.resize(actual_length);
 
 	EXPECT_EQ(expected_length, actual_length);
 	ASSERT_STREQ(expected, statistics.c_str());
 }
-*/
 

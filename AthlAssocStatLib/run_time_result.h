@@ -38,8 +38,7 @@ namespace athl_assoc
 
 		static TimeResult from_str(std::string_view tm_result_strv);
 
-		std::string to_str()                        const noexcept;
-		std::string to_str(std::string_view prefix) const noexcept;
+		std::string to_str() const noexcept;
 
 		static constexpr unsigned SECONDS_IN_MINUTE = 60;
 		static constexpr unsigned SECONDS_IN_HOURS  = 3600;
@@ -47,8 +46,7 @@ namespace athl_assoc
 		bool       operator<(const TimeResult& rhs) const noexcept;
 		TimeResult operator-(const TimeResult& rhs) const noexcept;
 		TimeResult operator+(const TimeResult& rhs) const noexcept;
-
-		void divide(unsigned denominator);
+		TimeResult operator/(unsigned denominator)  const;
 
 		unsigned hours() const noexcept
 		{

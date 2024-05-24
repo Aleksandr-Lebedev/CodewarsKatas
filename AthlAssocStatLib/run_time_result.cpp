@@ -72,31 +72,6 @@ namespace athl_assoc
 		return str_result;
 	}
 
-	std::string TimeResult::to_str(std::string_view prefix) const noexcept
-	{
-		std::string str_result(prefix);
-		str_result.append(": ").append(to_str());
-
-		return str_result;
-
-		// constexpr unsigned BUFF_SIZE         = 21;
-		// constexpr unsigned MAX_PREFIX_LENGTH = 10;
-
-		// if (prefix.size() > MAX_PREFIX_LENGTH)
-		// {
-		// 	prefix.remove_prefix(prefix.size() - MAX_PREFIX_LENGTH);
-		// }
-		// std::string prefix_str(prefix);
-
-		// const char* format = "%s: %2u|%2u|%2u";
-		// std::string str_result(BUFF_SIZE, '\0');
-		// auto chars_written = sprintf_s(str_result.data(), BUFF_SIZE, format, prefix_str.c_str(), _hours, _minutes, _seconds);
-		// assert(chars_written > 0);
-		// str_result.resize(chars_written);
-
-		// return str_result;
-	}
-
 	bool TimeResult::operator<(const TimeResult& rhs) const noexcept
 	{
 		return _total_seconds < rhs._total_seconds;
@@ -113,15 +88,15 @@ namespace athl_assoc
 		return TimeResult{ _total_seconds + rhs._total_seconds };
 	}
 
-	void TimeResult::divide(unsigned denominator)
+	TimeResult TimeResult::operator/(unsigned denominator) const
 	{
 		if (denominator == 0)
 		{
 			throw std::invalid_argument("The denominator cannot be equal to zero.");
 		}
+		unsigned total_seconds = _total_seconds / denominator;
 
-		_total_seconds /= denominator;
-		reset_hms();
+		return TimeResult{ total_seconds };
 	}
 
 	void TimeResult::reset_hms() noexcept
