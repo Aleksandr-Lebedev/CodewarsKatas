@@ -25,6 +25,11 @@ namespace
 		std::for_each(iter, std::sregex_token_iterator{}, [&run_results](auto& match) {
 			run_results.push_back(TimeResult::from_str(match.str()));
 			});
+
+		if (run_results.size() < MINIMUM_RUN_RESULTS_NUM)
+		{
+			throw std::invalid_argument("Race results string doesn't contains enough timestamps");
+		}
 		return run_results;
 	}
 
@@ -35,19 +40,6 @@ namespace
 		results_string.assign("Range: ").append(range.to_str())
 			          .append(" Average: ").append(average.to_str())
 			          .append(" Median: ").append(median.to_str());
-
-		results_string.shrink_to_fit();
-		return results_string;
-	}
-
-	std::string convert_calculation_results_to_string(const TimeResult& single)
-	{
-		std::string results_string(EMPTY_RESULTS_STR.size(), '\0');
-		
-		const auto time_result_str = single.to_str();
-		results_string.assign("Range: ").append(time_result_str)
-			          .append(" Average: ").append(time_result_str)
-			          .append(" Median: ").append(time_result_str);
 
 		results_string.shrink_to_fit();
 		return results_string;
@@ -100,14 +92,6 @@ namespace athl_assoc
 	std::string calculate_statistics(const std::string& race_results)
 	{
 		auto run_results = generate_time_results(race_results);
-		if (run_results.empty())
-		{
-			return std::string(EMPTY_RESULTS_STR);
-		}
-		else if (run_results.size() < MINIMUM_RUN_RESULTS_NUM)
-		{
-			return convert_calculation_results_to_string(run_results[0]);
-		}
 
 		std::sort(run_results.begin(), run_results.end());
 

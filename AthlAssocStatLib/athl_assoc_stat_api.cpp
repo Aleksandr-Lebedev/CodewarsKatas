@@ -78,9 +78,13 @@ int calculate_race_statistics(const char* const race_results_cstr, char* race_st
 		std::string race_results(race_results_cstr);
 		auto stats = athl_assoc::calculate_statistics(race_results);
 		const auto stats_length = static_cast<int>(stats.length());
+		if (*race_stats_out_buf_length < stats_length + 1)
+		{
+			return STRINS_SIZE_TOO_LOWER;
+		}
 		if (race_stats_out_buf != nullptr && *race_stats_out_buf_length > 0)
 		{
-			if (strncpy_s(race_stats_out_buf, sizeof(char) * *race_stats_out_buf_length, stats.c_str(), stats_length))
+			if (strncpy_s(race_stats_out_buf, *race_stats_out_buf_length, stats.c_str(), stats_length))
 			{
 				ErrorMessage::instance()->store_msg("An attempt to write statistics to the output buffer failed.");
 				return OTHER_ERROR;
@@ -88,6 +92,11 @@ int calculate_race_statistics(const char* const race_results_cstr, char* race_st
 		}
 
 		*race_stats_out_buf_length = stats_length;
+	}
+	catch (std::invalid_argument& error)
+	{
+		ErrorMessage::instance()->store_msg(error.what());
+	    return INPUT_STRING_INVALID;
 	}
 	catch (std::exception& error)
 	{
