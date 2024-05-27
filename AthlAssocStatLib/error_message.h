@@ -20,8 +20,6 @@ namespace athl_assoc
 			return _instance.get();
 		}
 
-		void store_msg(int error_code) noexcept;
-
 		void store_msg(std::string_view msg)
 		{
 			_error_msg = msg;

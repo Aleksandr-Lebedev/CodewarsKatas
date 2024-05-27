@@ -62,8 +62,5 @@
     <ClCompile Include="run_time_result.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="error_message.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>

@@ -58,7 +58,7 @@ int calculate_race_statistics(const char* const race_results_cstr, char* race_st
 		if (race_results_cstr == nullptr)
 		{
 			ErrorMessage::instance()->store_msg("'race_results_cstr' pointer is null");
-			return INPUT_STRING_PTR_NULL;
+			return INPUT_STRING_NULLPTR;
 		}
 
 		if (search_null_term(race_results_cstr, max_results_cstr_length + 1) > max_results_cstr_length)
@@ -106,7 +106,7 @@ int ATHLASSOCSTATLIB_API split_string(IStringSplitResult** split_result_ptr, con
 {
 	if (split_result_ptr == nullptr || cstr == nullptr)
 	{
-		return INPUT_STRING_PTR_NULL;
+		return INPUT_STRING_NULLPTR;
 	}
 
 	const auto max_argument_cstr_length = athl_assoc::MAX_CSTRING_LENGTH + 1;

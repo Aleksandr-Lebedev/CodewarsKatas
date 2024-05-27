@@ -7,7 +7,7 @@ namespace error_handling
 TEST(TestErrorHandling, TestRaceResultIsNullptr) {
 	int length = 0;
 	const auto ret_code = calculate_race_statistics(nullptr, nullptr, &length);
-	ASSERT_EQ(ret_code, INPUT_STRING_PTR_NULL);
+	ASSERT_EQ(ret_code, INPUT_STRING_NULLPTR);
 }
 
 TEST(TestErrorHandling, TestTooLongRaceResultsString) {

@@ -8,19 +8,19 @@ using namespace CodewarsKatas;
 static int check_args(const char* const input, int input_size, const char* const output, int output_size)
 {
 	if (input == nullptr)
-		return INPUT_STRING_PTR_NULL;
+		return INPUT_STRING_NULLPTR;
 
 	if (input_size == 0)
 		return INPUT_STRING_LENGTH_ZERO;
 
 	if (output == nullptr)
-		return OUTPUT_STRING_PTR_NULL;
+		return OUTPUT_STRING_NULLPTR;
 
 	if (output_size == 0)
 		return OUTPUT_STRING_LENGTH_ZERO;
 
 	if (input_size > output_size)
-		return STRINS_SIZE_TO_LOWER;
+		return STRINS_SIZE_TOO_LOWER;
 
 	return COMMON_NO_ERROR;
 }
