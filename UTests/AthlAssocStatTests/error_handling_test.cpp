@@ -49,7 +49,7 @@ TEST(TestErrorHandling, TestOutputBufferTooShort)
 	std::string dummy(dummy_str_length, '\0');
 	auto ret_code = calculate_race_statistics(race_results, dummy.data(), &dummy_str_length);
 	ASSERT_NE(ret_code, COMMON_NO_ERROR);
-	EXPECT_EQ(ret_code, STRINS_SIZE_TOO_LOWER);
+	EXPECT_EQ(ret_code, STRING_SIZE_TOO_LOWER);
 }
 }
 

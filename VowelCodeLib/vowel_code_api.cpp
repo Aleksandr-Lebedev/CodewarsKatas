@@ -20,7 +20,7 @@ static int check_args(const char* const input, int input_size, const char* const
 		return OUTPUT_STRING_LENGTH_ZERO;
 
 	if (input_size > output_size)
-		return STRINS_SIZE_TOO_LOWER;
+		return STRING_SIZE_TOO_LOWER;
 
 	return COMMON_NO_ERROR;
 }

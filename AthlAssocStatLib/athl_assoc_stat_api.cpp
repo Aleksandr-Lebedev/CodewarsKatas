@@ -80,7 +80,7 @@ int calculate_race_statistics(const char* const race_results_cstr, char* race_st
 		const auto stats_length = static_cast<int>(stats.length());
 		if (*race_stats_out_buf_length < stats_length + 1)
 		{
-			return STRINS_SIZE_TOO_LOWER;
+			return STRING_SIZE_TOO_LOWER;
 		}
 		if (race_stats_out_buf != nullptr && *race_stats_out_buf_length > 0)
 		{

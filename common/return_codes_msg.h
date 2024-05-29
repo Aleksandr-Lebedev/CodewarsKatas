@@ -16,7 +16,7 @@ inline const char* get_return_code_default_msg(COMMON_RET_CODES ret_code) noexce
 		{ OUTPUT_STRING_INVALID, "Output string is invalid" },
 		{ OUTPUT_STRING_LENGTH_ZERO, "Output string length is zero" },
 		{ OUTPUT_STRING_NULLPTR, "Output string pointer is null" },
-		{ STRINS_SIZE_TOO_LOWER, "String length is too lower" },
+		{ STRING_SIZE_TOO_LOWER, "String length is too lower" },
 		{ EXCEPTION_THROWN, "An exception has been thrown" },
 		{ OTHER_ERROR, "Other error" },
 		{ MODULE_INTERNAL_ERR0R, "Module internal error"}
