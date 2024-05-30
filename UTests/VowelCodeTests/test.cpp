@@ -8,7 +8,7 @@ void run_test_case(char(&buffer)[N], const char* input, int input_size, const ch
 {
 	const auto ret = func(input, input_size, buffer, N);
 
-	EXPECT_EQ(ret, NO_ERROR_VWC);
+	EXPECT_EQ(ret, COMMON_NO_ERROR);
 	EXPECT_STREQ(buffer, expected);
 }
 }
