@@ -164,19 +164,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="athl_assoc_stat_api.h" />
-    <ClInclude Include="auxiliary.h" />
     <ClInclude Include="calculate_stats.h" />
     <ClInclude Include="error_message.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="library_declspec.h" />
-    <ClInclude Include="custom_exceptions.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="run_time_result.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="athl_assoc_stat_api.cpp" />
     <ClCompile Include="calculate_stats.cpp" />
-    <ClCompile Include="auxiliary.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

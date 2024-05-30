@@ -19,19 +19,7 @@ int ATHLASSOCSTATLIB_API calculate_race_statistics(const char* const race_result
 /// Returns the maximum number of character in a race results string without a null terminator
 int ATHLASSOCSTATLIB_API race_results_str_max_length();
 
-struct IStringSplitResult
-{
-	virtual const char* next() = 0;
-	virtual const unsigned count() const = 0;
-
-	virtual ~IStringSplitResult() {}
-};
-
-int ATHLASSOCSTATLIB_API split_string(IStringSplitResult** split_result_ptr, const char* const cstr, char delim);
-
-typedef void(&StringSplitResultDeleter)(IStringSplitResult*);
-void ATHLASSOCSTATLIB_API unbind_string_split_result(IStringSplitResult* split_result_ptr);
-
-ATHLASSOCSTATLIB_API 
+/// Returns a string represantion of the last error if any
+ATHLASSOCSTATLIB_API
 const char* get_last_error_msg_cstr();
 

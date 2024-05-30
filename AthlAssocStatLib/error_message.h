@@ -2,42 +2,42 @@
 
 namespace athl_assoc
 {
-	class ErrorMessage
-	{
-	public:
-		static void init() noexcept
-		{
-			_instance.reset(new ErrorMessage{});
-		}
+class ErrorMessage
+{
+public:
+    static void init() noexcept
+    {
+        _instance.reset(new ErrorMessage{});
+    }
 
-		static ErrorMessage* instance() noexcept
-		{
-			if (!_instance)
-			{
-				init();
-			}
+    static ErrorMessage* instance() noexcept
+    {
+        if (!_instance)
+        {
+            init();
+        }
 
-			return _instance.get();
-		}
+        return _instance.get();
+    }
 
-		void store_msg(std::string_view msg)
-		{
-			_error_msg = msg;
-		}
+    void store_msg(std::string_view msg)
+    {
+        _error_msg = msg;
+    }
 
-		const char* get_msg() const noexcept
-		{
-			return _error_msg.c_str();
-		}
+    const char* get_msg() const noexcept
+    {
+        return _error_msg.c_str();
+    }
 
-		~ErrorMessage() {}
+    ~ErrorMessage() = default;
 
-	private:
-		ErrorMessage() = default;
+private:
+    ErrorMessage() = default;
 
-		inline static std::unique_ptr<ErrorMessage> _instance;
+    inline static std::unique_ptr<ErrorMessage> _instance;
 
-		std::string _error_msg;
-	};
+    std::string _error_msg;
+};
 }
 
