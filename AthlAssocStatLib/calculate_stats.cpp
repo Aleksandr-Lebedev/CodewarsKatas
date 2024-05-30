@@ -78,7 +78,7 @@ TimeResult calculate_median(const TimeResultsVector& run_results)
         auto median_idx = results_count / 2;
         if (results_count % 2 == 0)
         {
-            return calculate_average(run_results[median_idx], run_results[median_idx + 1]);
+            return calculate_average(run_results[median_idx - 1], run_results[median_idx]);
         }
         else
         {

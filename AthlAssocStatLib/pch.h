@@ -14,9 +14,6 @@
 #include <cctype>
 #include <cstdio>
 #include <cstdlib>
-#include <initializer_list>
-#include <iterator>
-#include <memory>
 #include <numeric>
 #include <regex>
 #include <stdexcept>
